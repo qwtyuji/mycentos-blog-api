@@ -27,7 +27,8 @@ class AddFieldPermissionTable extends Migration
     public function down()
     {
         Schema::table('permissions', function (Blueprint $table) {
-            //
+            $table->dropColumn('group');
+            $table->dropColumn('cname');
         });
     }
 }

@@ -8,7 +8,7 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                   后台首页 You are logged in!
+                   <example></example>
                 </div>
             </div>
         </div>

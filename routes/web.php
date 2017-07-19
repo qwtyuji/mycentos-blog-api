@@ -24,3 +24,7 @@ Route::group(['prefix'=>'dashboard','namespace'=>'Admin','middleware'=>['auth']]
     Route::resource('/permission','PermissionController');
     Route::resource('/menu','MenuController');
 });
+
+Route::group(['prefix'=>'dashboard','middleware'=>['auth']],function (){
+    Route::resource('/article','ArticleController');
+});

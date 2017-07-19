@@ -101,6 +101,7 @@ class RoleController extends AuthController
      */
     public function update(Request $request, Role $role)
     {
+//        $role = Role::where('id',$id)->first();
         $rule = [
             'name' => [
                 'required',

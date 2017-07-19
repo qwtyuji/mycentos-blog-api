@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\EventLog;
 use App\Permission;
 use App\Role;
 use App\User;
@@ -30,6 +31,7 @@ class UserController extends AuthController
     {
         $user =$this->user->orderBy('id','desc')->paginate();
         $role = Role::all();
+
         return view('admin.user.index',compact('user','role'));
     }
     /**
@@ -117,7 +119,7 @@ class UserController extends AuthController
      */
     public function update(Request $request, $id)
     {
-        $user = $this->user->find($id);
+        $user = User::findOrFail($id);
         $data = $request->all();
         $rule =[
             'name'=>'required|min:3|max:255',
@@ -130,7 +132,7 @@ class UserController extends AuthController
             'email.required'=>'email必须',
             'email.string'=>'不是有效的字符',
             'email.email'=>'不是有效的Email地址',
-            'email.max'=>'Email地址超过最大产能过度',
+            'email.max'=>'Email地址超过最大长度',
             'email.unique'=>'邮箱已注册',
         ];
         if (!is_null($data['password'])){
@@ -145,8 +147,7 @@ class UserController extends AuthController
             $message = array_merge($message,$messagePassword);
         }
         $this->validate($request,$rule,$message);
-        // Get the user
-        $user = User::findOrFail($id);
+
         // Update user
         $user->fill($request->except('roles', 'permissions', 'password'));
         // check for password change

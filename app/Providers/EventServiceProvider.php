@@ -2,7 +2,13 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Event;
+use App\Article;
+use App\Category;
+use App\Observers\LogObserver;
+use App\Permission;
+use App\Role;
+use App\Tag;
+use App\User;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
 class EventServiceProvider extends ServiceProvider
@@ -13,8 +19,11 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\Event' => [
-            'App\Listeners\EventListener',
+        'App\Events\EventLogLogin' => [
+            'App\Listeners\EventLogLoginListener',
+        ],
+        'App\Events\EventLogLoginFail' => [
+            'App\Listeners\EventLogLoginFailListener',
         ],
     ];
 
@@ -26,7 +35,11 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         parent::boot();
-
-        //
+//        Role::observe(LogObserver::class);
+//        User::observe(LogObserver::class);
+//        Permission::observe(LogObserver::class);
+//        Article::observe(LogObserver::class);
+//        Category::observe(LogObserver::class);
+//        Tag::observe(LogObserver::class);
     }
 }
