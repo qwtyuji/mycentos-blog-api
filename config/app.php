@@ -12,8 +12,8 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => env('APP_NAME', 'Laravel Rbac 权限管理 Demo'),
-    'domain' => env('API_DOMAIN', 'http://app.dev'),
+    'name' => env('APP_NAME', 'mycentos Api'),
+    'domain' => env('API_DOMAIN', 'http://api.mycentos.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://api.mycentos.com'),
 
     /*
     |--------------------------------------------------------------------------
