@@ -13,7 +13,7 @@ class CreateArticlesTagsTable extends Migration
      */
     public function up()
     {
-        Schema::create('articles_tags', function (Blueprint $table) {
+        Schema::create('article_tag', function (Blueprint $table) {
             $table->unsignedInteger('article_id');
             $table->unsignedInteger('tag_id');
             $table->foreign('article_id')
@@ -36,6 +36,6 @@ class CreateArticlesTagsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('articles_tags');
+        Schema::dropIfExists('article_tag');
     }
 }

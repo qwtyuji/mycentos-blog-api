@@ -82,3 +82,10 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/log/remove', '\App\Api\LogController@destroy')->name('log.delete');
     Route::get('/log/batchremove', '\App\Api\LogController@batchremove')->name('log.delete');
 });
+//移动端首页
+Route::group(['middleware' => 'api'], function () {
+    Route::get('/getWapCategory', '\App\Api\HomeWapController@getWapCategory');
+    Route::get('/getWapArticle', '\App\Api\HomeWapController@getWapArticle');
+    Route::get('/getWapArticleById', '\App\Api\HomeWapController@getWapArticleById');
+    Route::get('/getWapArticleByCategory', '\App\Api\HomeWapController@getWapArticleByCategory');
+});
